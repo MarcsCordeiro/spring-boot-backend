@@ -3,9 +3,9 @@ package com.spring.moveorder.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.spring.moveorder.model.Categoria;
+import com.spring.moveorder.model.Produto;
 
 @Repository
-public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
+public interface ProdutoRepository extends JpaRepository<Produto, Integer>{
 
 }

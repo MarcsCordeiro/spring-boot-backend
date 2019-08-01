@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.moveorder.model.Categorias;
+import com.spring.moveorder.model.Categoria;
 import com.spring.moveorder.services.CategoriaService;
 
 @RestController
@@ -21,7 +21,7 @@ public class CategoriaResource {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		
-		Categorias obj = service.buscar(id);
+		Categoria obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);
 		
 	}
