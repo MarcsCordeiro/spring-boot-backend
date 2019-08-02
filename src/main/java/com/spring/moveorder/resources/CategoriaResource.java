@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.moveorder.model.Categoria;
 import com.spring.moveorder.services.CategoriaService;
 
+
 @RestController
 @RequestMapping(value="/categorias")
 public class CategoriaResource {
@@ -25,7 +26,5 @@ public class CategoriaResource {
 		return ResponseEntity.ok().body(obj);
 		
 	}
-	
-
-	
+		
 }
