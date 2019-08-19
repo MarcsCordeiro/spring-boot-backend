@@ -13,6 +13,7 @@ import com.spring.moveorder.model.Cidade;
 import com.spring.moveorder.model.Cliente;
 import com.spring.moveorder.model.Endereco;
 import com.spring.moveorder.model.Estado;
+import com.spring.moveorder.model.ItemPedido;
 import com.spring.moveorder.model.Pagamento;
 import com.spring.moveorder.model.PagamentoComBoleto;
 import com.spring.moveorder.model.PagamentoComCartao;
@@ -25,6 +26,7 @@ import com.spring.moveorder.repositories.CidadeRepository;
 import com.spring.moveorder.repositories.ClienteRepository;
 import com.spring.moveorder.repositories.EnderecoRepository;
 import com.spring.moveorder.repositories.EstadoRepository;
+import com.spring.moveorder.repositories.ItemPedidoRepository;
 import com.spring.moveorder.repositories.PagamentoRepository;
 import com.spring.moveorder.repositories.PedidoRepository;
 import com.spring.moveorder.repositories.ProdutoRepository;
@@ -47,6 +49,8 @@ public class MoveorderApplication implements CommandLineRunner{
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MoveorderApplication.class, args);
@@ -111,5 +115,18 @@ public class MoveorderApplication implements CommandLineRunner{
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+		
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 00.0, 2, 80.0);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 	}
 }
