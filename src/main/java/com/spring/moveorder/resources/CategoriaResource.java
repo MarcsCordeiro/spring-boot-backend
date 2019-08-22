@@ -68,10 +68,10 @@ public class CategoriaResource {
 	
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<CategoriaDTO>> findPage(
-			@RequestParam(value ="page" , defaultValue ="0") Integer page, 
-			@RequestParam(value ="linesPerPage" , defaultValue ="24") Integer linesPerPage, 
-			@RequestParam(value ="orderBy" , defaultValue ="nome") String orderBy, 
-			@RequestParam(value ="direction" , defaultValue ="ASC") String direction){
+			@RequestParam(value ="page" , defaultValue ="0") Integer page, //O numero da pagina
+			@RequestParam(value ="linesPerPage" , defaultValue ="24") Integer linesPerPage, //quantidade que sera mostrada
+			@RequestParam(value ="orderBy" , defaultValue ="nome") String orderBy, //chamada por nome
+			@RequestParam(value ="direction" , defaultValue ="ASC") String direction){//Se é crescente ASC ou decrecente DESC
 		Page<Categoria> list = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<CategoriaDTO> listDto = list.map(obj -> new CategoriaDTO(obj));
 		return ResponseEntity.ok().body(listDto);
