@@ -1,6 +1,7 @@
 package com.spring.moveorder.model;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -108,5 +109,21 @@ public class ItemPedido implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		java.text.NumberFormat nf = java.text.NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+		StringBuilder builder = new StringBuilder();
+		builder.append(getProduto().getNome());
+		builder.append(", Qte: ");
+		builder.append(getQuantidade());
+		builder.append(", preco unitário: ");
+		builder.append(nf.format(getPreco()));
+		builder.append(", Subtotal: ");
+		builder.append(nf.format(getSubTotal()));
+		builder.append("\n");
+		return builder.toString();
+	}
+	
 	
 }
